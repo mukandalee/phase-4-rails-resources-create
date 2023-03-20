@@ -15,5 +15,22 @@ class BirdsController < ApplicationController
       render json: { error: "Bird not found" }, status: :not_found
     end
   end
+  #IF writing a fetch could be like 
+#   fetch("http://localhost:3000/birds", {
+#   method: "POST",
+#   headers: {
+#     "Content-Type": "application/json",
+#   },
+#   body: JSON.stringify({
+#     name: "Monk Parakeet",
+#     species: "Myiopsitta monachus",
+#   }),
+# });
+def create
+  bird = Bird.create(name: params[:name], species: params[:species])
+  render json: bird, status: :created
+end
+
+
 
 end
